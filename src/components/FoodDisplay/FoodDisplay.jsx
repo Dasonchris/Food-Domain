@@ -2,13 +2,10 @@ import React from "react";
 import FoodItem from "../FoodItem/FoodItem";
 import { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
-import "./FoodDisplay.css"
+import "./FoodDisplay.css";
 
-
-
-const FoodDisplay = ({category}) => {
-
-  const { food_list }= useContext(StoreContext)
+const FoodDisplay = ({ category }) => {
+  const { food_list } = useContext(StoreContext);
 
   return (
     <div className="food-display" id="food-display">
@@ -27,7 +24,6 @@ const FoodDisplay = ({category}) => {
               />
             );
           }
-
         })}
       </div>
     </div>

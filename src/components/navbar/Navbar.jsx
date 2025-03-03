@@ -1,9 +1,26 @@
 import React, { useState } from "react";
 import { assets } from "../../assets/assets";
+import { StoreContext } from "../../context/StoreContext";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css"
 
+
+
 function Navbar() {
+   const getCartItemCount = () => {
+     let count = 0;
+     for (const item in CartItems) {
+       if (CartItems[item] > 0) {
+         count += CartItems[item];
+       }
+     }
+     return count;
+   };
+
+   const { CartItems, food_list, removeFromCart, getTotalCartAmount } =
+      useContext(StoreContext);
+
   const [menu, setMenu] = useState("home");
   return (
     <div className="navbar">
@@ -45,10 +62,14 @@ function Navbar() {
       <div className="navbar-right">
         <img src={assets.search_icon} alt="" />
         <div className="navbar-search-icon">
-          <Link>
+          <Link to="/cart">
             <img src={assets.basket_icon} alt="" />
           </Link>
-          <div className="dot">10</div>
+          <div className="dot">
+            {getCartItemCount() > 0 && (
+              <span className="cart-count">{getCartItemCount()}</span>
+            )}
+          </div>
         </div>
         <button>Sign In</button>
       </div>

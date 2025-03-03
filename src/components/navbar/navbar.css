@@ -1,8 +1,15 @@
 .navbar {
-  padding: 20px 0;
+  padding: 1.5rem 4rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  background-color: rgba(240, 255, 255, 0.342);
+  backdrop-filter: blur(10px);
 }
 
 .navbar .logo {
@@ -60,6 +67,7 @@
   border-radius: 50%;
   top: -8px;
   right: -8px;
+  padding: 0px 5px;
 }
 
 @media (max-width: 1050px) {
@@ -86,8 +94,13 @@
 }
 
 @media (max-width: 900px) {
+
+  .navbar{
+    padding: 1rem 2rem;
+  }
+
   .navbar .logo {
-    width: 120px;
+    width: 100px;
   }
 
   .navbar-menu {
@@ -110,7 +123,16 @@
 }
 
 @media (max-width: 750px) {
+
+   .navbar{
+    padding: .5rem 2rem;
+  }
+
   .navbar-menu {
     display: none;
+  }
+
+    .navbar .logo {
+    width: 70px;
   }
 }
