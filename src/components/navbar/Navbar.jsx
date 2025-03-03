@@ -1,69 +1,104 @@
-import React, { useState } from "react";
+import { useState, useContext } from "react";
 import { assets } from "../../assets/assets";
 import { StoreContext } from "../../context/StoreContext";
-import { useContext } from "react";
+import { useTheme } from "../../context/ThemeContext";
 import { Link } from "react-router-dom";
-import "./Navbar.css"
+import "./Navbar.css";
 
-
-
-function Navbar() {
-   const getCartItemCount = () => {
-     let count = 0;
-     for (const item in CartItems) {
-       if (CartItems[item] > 0) {
-         count += CartItems[item];
-       }
-     }
-     return count;
-   };
-
-   const { CartItems, food_list, removeFromCart, getTotalCartAmount } =
-      useContext(StoreContext);
-
+function Navbar({ setShowLogin }) {
   const [menu, setMenu] = useState("home");
-  return (
-    <div className="navbar">
-      <Link to="/">
-        <img src={assets.logo} alt="" className="logo" />
-      </Link>
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { isDarkMode, toggleDarkMode } = useTheme();
 
-      <ul className="navbar-menu">
-        {/* Link component from react-router-dom to navigate to the home page */}
+  const { CartItems, food_list, removeFromCart, getTotalCartAmount } =
+    useContext(StoreContext);
+
+  const getCartItemCount = () => {
+    let count = 0;
+    for (const item in CartItems) {
+      if (CartItems[item] > 0) {
+        count += CartItems[item];
+      }
+    }
+    return count;
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  return (
+    <div className={`navbar ${isDarkMode ? "dark" : ""}`}>
+      <div className="navbar-mobile-header">
+        <Link to="/">
+          <img
+            src={assets.logo || "/placeholder.svg"}
+            alt=""
+            className="logo"
+          />
+        </Link>
+      </div>
+
+      <ul className={`navbar-menu ${mobileMenuOpen ? "show" : ""}`}>
         <Link
-          to="/" // Specifies the target route as the home page
-          onClick={() => setMenu("home")} // Sets the menu state to "home" when clicked
-          className={menu === "home" ? "active" : ""} // Applies the "active" class if the current menu state is "home"
-        >
+          to="/"
+          onClick={() => {
+              document
+                .getElementById("header")
+                ?.scrollIntoView({ behavior: "smooth" });
+            setMenu("home");
+            setMobileMenuOpen(false);
+          }}
+          className={menu === "home" ? "active" : ""}>
           Home
         </Link>
         <Link
-          to="#explore-menu" // Specifies the target route as the home page
-          onClick={() => setMenu("menu")} // Sets the menu state to "home" when clicked
-          className={menu === "menu" ? "active" : ""} // Applies the "active" class if the current menu state is "home"
-        >
+          to="/"
+          onClick={() => {
+            setMenu("menu");
+            setMobileMenuOpen(false);
+            document
+              .getElementById("explore-menu")
+              ?.scrollIntoView({ behavior: "smooth" });
+          }}
+          className={menu === "menu" ? "active" : ""}>
           Menu
         </Link>
         <Link
-          to="#app-download" // Specifies the target route as the home page
-          onClick={() => setMenu("mobile-app")} // Sets the menu state to "home" when clicked
-          className={menu === "mobile-app" ? "active" : ""} // Applies the "active" class if the current menu state is "home"
-        >
+          to="/"
+          onClick={() => {
+            setMenu("mobile-app");
+            document
+              .getElementById("app-download")
+              ?.scrollIntoView({ behavior: "smooth" });
+            setMenu("mobile-app");
+            setMobileMenuOpen(false);
+          }}
+          className={menu === "mobile-app" ? "active" : ""}>
           Mobile App
         </Link>
         <Link
-          to="#footer" // Specifies the target route as the home page
-          onClick={() => setMenu("contact-us")} // Sets the menu state to "home" when clicked
-          className={menu === "contact-us" ? "active" : ""} // Applies the "active" class if the current menu state is "home"
-        >
+          to="#footer"
+          onClick={() => {
+            document
+              .getElementById("footer")
+              ?.scrollIntoView({ behavior: "smooth" });
+            setMenu("contact-us");
+            setMobileMenuOpen(false);
+          }}
+          className={menu === "contact-us" ? "active" : ""}>
           Contact Us
         </Link>
       </ul>
       <div className="navbar-right">
-        <img src={assets.search_icon} alt="" />
+        <img
+          src={assets.search_icon || "/placeholder.svg"}
+          alt=""
+          className="search-icon"
+        />
         <div className="navbar-search-icon">
           <Link to="/cart">
-            <img src={assets.basket_icon} alt="" />
+            <img src={assets.basket_icon || "/placeholder.svg"} alt="" />
           </Link>
           <div className="dot">
             {getCartItemCount() > 0 && (
@@ -71,10 +106,23 @@ function Navbar() {
             )}
           </div>
         </div>
-        <button>Sign In</button>
+        <span className="theme-toggle" onClick={toggleDarkMode}>
+          <img
+            src={isDarkMode ? assets.sun_icon : assets.moon_icon}
+            alt={isDarkMode ? "Light mode" : "Dark mode"}
+          />
+        </span>
+        <button onClick={() => setShowLogin(true)}>Sign In</button>
+      </div>
+      <div className="mobile-toggle" onClick={toggleMobileMenu}>
+        <img
+          src={assets.menu_icon || "/placeholder.svg"}
+          alt="menu"
+          className="hamburger"
+        />
       </div>
     </div>
   );
 }
 
-export default Navbar; 
+export default Navbar;

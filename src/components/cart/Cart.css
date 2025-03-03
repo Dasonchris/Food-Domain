@@ -1,0 +1,12 @@
+.cart.dark {
+  background-color: var(--bg-dark);
+}
+
+.cart.dark .cart-item {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+
+.cart.dark .total {
+  color: #ffd700;
+}
