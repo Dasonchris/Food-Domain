@@ -18,11 +18,10 @@
 }
 
 .place-order-left input{
-    margin-bottom: 15px;
+    margin-bottom: 1.2rem;
     width: 100%;
     padding: 10px;
     border: 2px solid wheat;
-    margin-bottom: 10px;
     outline: red;
 
 }
@@ -39,4 +38,12 @@
 
 .place-order .cart-total-details{
     margin-top: 10px;
+}
+
+
+@media (max-width: 780px) {
+    .place-order{
+        flex-direction: column;
+    }
+    
 }

@@ -5,9 +5,9 @@ import "./AppDownload.css"
 const AppDownload = () => {
   return (
     <div className="app-download" id="app-download">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
-        delectus totam vero facilis distinctio libero!
+      <p style={{color:"white"}}>
+        Download our app for the best food ordering experience. Get exclusive deals
+        and instant updates on your favorite restaurants' meals.
       </p>
       <div className="app-download-platform">
         <img src={assets.play_store} alt="" />

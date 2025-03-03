@@ -1,4 +1,4 @@
-import Home from "./pages/home/home";
+
 import { Routes, Route } from "react-router-dom";
 import Cart from "./pages/cart/Cart";
 import Navbar from "./components/navbar/Navbar";
@@ -7,6 +7,7 @@ import Checkout from "./pages/checkout/Checkout";
 import LoginPage from "../src/components/LoginPage/LoginPage"
 import { useState } from "react";
 import { ThemeProvider } from "./context/ThemeContext";
+import Home from "./pages/home/home";
 
 
 function App() {

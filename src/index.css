@@ -41,6 +41,11 @@ body.dark-mode .card {
   border-color: #333;
 }
 
+body.dark-mode .login-popup-container {
+  background-color: #1e1e1e;
+  border-color: #333;
+}
+
 body.dark-mode input,
 body.dark-mode textarea,
 body.dark-mode select {
@@ -51,6 +56,11 @@ body.dark-mode select {
 
 body.dark-mode button {
   background-color: #333;
+  color: var(--text-dark);
+}
+
+body.dark-mode button:hover {
+  background-color: tomato;
   color: var(--text-dark);
 }
 

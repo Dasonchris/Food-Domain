@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import { assets } from '../../assets/assets';
-import "./LoginPage.css"
+import "./Loginpage.css"
 
 const LoginPage = ({setShowLogin}) => {
    const [currentState, setCurrentState] = useState("Sign Up");

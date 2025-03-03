@@ -12,9 +12,10 @@ const Footer = () => {
             <img src={assets.logo} alt="" />
           </Link>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum
-            quaerat labore libero accusamus nostrum dolorum accusantium in
-            perspiciatis nemo assumenda, recusandae veritatis quia ullam.
+            Discover a world of delicious dishes prepared with premium
+            ingredients. Enjoy every bite! <br />
+            Explore our weekly special offers, fresh seasonal items, and chef's
+            curated dishes for an unforgettable dining experience.
           </p>
           <div className="footer-social-icons">
             <img src={assets.facebook_icon} alt="" />
