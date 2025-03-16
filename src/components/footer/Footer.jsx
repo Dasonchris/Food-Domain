@@ -35,13 +35,13 @@ const Footer = () => {
         <div className="footer-content-right">
           <h4>Get In Touch</h4>
           <ul>
-            <li>+233 55 076 5475</li>
+            <li>+233 55 94 27277</li>
             <li>TomatoFoods@gmail.com</li>
           </ul>
         </div>
       </div>
       <hr />
-      <div className="footer-copyright"> Copyright &copy; ZENith </div>
+      <div className="footer-copyright"> Copyright &copy; ChRiS </div>
     </div>
   );
 };
